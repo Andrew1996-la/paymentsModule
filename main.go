@@ -1,21 +1,19 @@
 package main
 
 import (
-	"fmt"
 	"study/payments"
 	"study/payments/methods"
+
+	"github.com/k0kubun/pp"
 )
 
 func main() {
-	method := methods.Card{}
-	paymentModule := payments.NewPaymentModule(method)
+	methods := methods.Cripto{}
 
- 	paymentModule.Pay("Iphone", 100)
-	
-	idMac:=paymentModule.Pay("Mac", 200)
-	paymentModule.Cancel(idMac)
+	payments := payments.NewPaymentModule(methods)
 
-	allInfo := paymentModule.ShowAll()
-
-	fmt.Println(allInfo)
+	payments.Pay("Бургер", 2)
+	payments.Pay("Монитор", 100)
+	info := payments.ShowAll()
+	pp.Println(info)
 }

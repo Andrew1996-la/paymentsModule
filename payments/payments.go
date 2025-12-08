@@ -2,16 +2,22 @@ package payments
 
 import "fmt"
 
+//описание интерфейса. Все что умеет Pay и Cancel является PaymentMethods
 type PaymentMethods interface {
 	Pay(amount float64) int
 	Cancel(id int)
 }
 
+// Описание структуры PaymentsInfo. 
+// paymentsInfo это мапа ключ это id а значение платеж
+// paymentMethod это любас структура которая умеет Pay Cancel
 type PaymentsModule struct {
 	paymentsInfo   map[int]paymentInfo
 	paymentMethods PaymentMethods
 }
 
+// Коструктор создания платежного модуля. Принимает стурктуру которая умеет Pay Cancel
+// Возвращает указатель на модуль с проинициализированной мапой и методом оплаты
 func NewPaymentModule(paymentMethods PaymentMethods) *PaymentsModule {
 	return &PaymentsModule{
 		paymentsInfo:   make(map[int]paymentInfo),
