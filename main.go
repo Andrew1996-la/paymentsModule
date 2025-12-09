@@ -1,17 +1,16 @@
 package main
 
 import (
-	"study/game"
-
-	"github.com/k0kubun/pp"
+	spellsystem "study/spellSystem"
 )
 
 func main() {
-	warrior := game.NewWarrior("Aragorn")
-	mage := game.NewMage("Gendalf")
-
-	battleModuel := game.NewBattleModule(warrior, mage)
-
-	result := battleModuel.Fight()
-	pp.Println(result)
+	fireball := spellsystem.NewFireball()
+	healing := spellsystem.NewHealing()
+	mage := spellsystem.NewMage()
+	mage.LearnSpell(fireball)
+	mage.LearnSpell(healing)
+	// mage.ShowMySpells()
+	mage.CastSpell("Fireball")
+	mage.CastSpell("Healing")
 }
