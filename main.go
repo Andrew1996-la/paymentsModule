@@ -1,16 +1,17 @@
 package main
 
-import (
-	spellsystem "study/spellSystem"
-)
+import "study/pets"
 
 func main() {
-	fireball := spellsystem.NewFireball()
-	healing := spellsystem.NewHealing()
-	mage := spellsystem.NewMage()
-	mage.LearnSpell(fireball)
-	mage.LearnSpell(healing)
-	// mage.ShowMySpells()
-	mage.CastSpell("Fireball")
-	mage.CastSpell("Healing")
+	dog := pets.NewDog("Рекс")
+	eagle := pets.NewEagle("Акела")
+
+	hero := pets.NewHero("Робинзон Крузо")
+	hero.AddPet(dog)
+	hero.AddPet(eagle)
+	hero.ShowName()
+	// hero.ShowPets()
+	hero.GetPetComand(eagle.Name())
+	hero.GetPetComand(dog.Name())
+
 }
