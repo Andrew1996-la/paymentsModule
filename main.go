@@ -1,17 +1,11 @@
 package main
 
-import "study/pets"
+import "study/notifier"
 
 func main() {
-	dog := pets.NewDog("Рекс")
-	eagle := pets.NewEagle("Акела")
+	emailNotifier := notifier.NewEmailNotification()
+	service := notifier.NotificationService{}
 
-	hero := pets.NewHero("Робинзон Крузо")
-	hero.AddPet(dog)
-	hero.AddPet(eagle)
-	hero.ShowName()
-	// hero.ShowPets()
-	hero.GetPetComand(eagle.Name())
-	hero.GetPetComand(dog.Name())
-
+	service.SetNotifire(emailNotifier)
+	service.NotifyUser(1, "just email notifier")
 }
