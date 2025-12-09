@@ -1,19 +1,17 @@
 package main
 
 import (
-	"study/payments"
-	"study/payments/methods"
+	"study/game"
 
 	"github.com/k0kubun/pp"
 )
 
 func main() {
-	methods := methods.Cripto{}
+	warrior := game.NewWarrior("Aragorn")
+	mage := game.NewMage("Gendalf")
 
-	payments := payments.NewPaymentModule(methods)
+	battleModuel := game.NewBattleModule(warrior, mage)
 
-	payments.Pay("Бургер", 2)
-	payments.Pay("Монитор", 100)
-	info := payments.ShowAll()
-	pp.Println(info)
+	result := battleModuel.Fight()
+	pp.Println(result)
 }
